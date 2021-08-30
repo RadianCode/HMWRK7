@@ -77,3 +77,6 @@ var s2 = appleWatch(series: 5, alwaysOnDisplay: true, color: "White")
 
 
 
+
+
+
