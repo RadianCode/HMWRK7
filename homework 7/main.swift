@@ -35,8 +35,8 @@ class appleWatch {
         case lowBattery
     }
     
-    func checkSeries(series: Int?, alwaysOnDisplay: Bool) throws {
-        guard series != nil else {
+    func checkSeries(series: Int?) throws {
+        guard series! < 5 else {
             throw appleWatchError.seriesError
         }
         
@@ -56,17 +56,8 @@ class appleWatch {
         }
     }
     
-//    do {
-//            try testErrorAppleWatch()
-//        } catch appleWatchError.lowBattery {
-//            print("low battery")
-//        } catch appleWatchError.alwaysOnError {
-//            print("Display is ON")
-//        }
-    // тут по чему то блок выдает Expected Declaration, хотя вызвываю я его после функции
-}
     
-// Я совсем не понял как я могу использоваь guard let если я например хотел бы просто проверить серию эпл вотч. Типа ввел отличную от 1-5 и получил ошибку.
+}
 
 
 var s1 = appleWatch(series: 10, alwaysOnDisplay: true, color: "Black")
@@ -74,9 +65,11 @@ print(s1)
 
 var s2 = appleWatch(series: 5, alwaysOnDisplay: true, color: "White")
 
-
-
-
+do {
+    try s1.checkSeries(series: 10)
+} catch appleWatch.appleWatchError.seriesError {
+    print("No Series")
+}
 
 
 
